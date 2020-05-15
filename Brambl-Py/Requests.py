@@ -75,32 +75,32 @@ class Requests():
     def unlockKeyfile(self,params):
         pass
 
-    def signTransaction(self,params):
-        pass
+    # def signTransaction(self,params):
+    #     pass
 
-    def broadcastTx(self,params):
-        pass
+    # def broadcastTx(self,params):
+    #     pass
 
-    def transferPolys(self,params):
-        pass
+    # def transferPolys(self,params):
+    #     pass
 
-    def transferArbits(self,params):
-        pass
+    # def transferArbits(self,params):
+    #     pass
 
-    def createAssets(self,params):
-        pass
+    # def createAssets(self,params):
+    #     pass
 
     def createAssetsPrototype(self,params):
         pass
 
-    def transferAssets(self,params):
-        pass
+    # def transferAssets(self,params):
+    #     pass
 
     def transferAssetsPrototype(self,params):
         pass
 
-    def transferTargetAssets(self,params):
-        pass
+    # def transferTargetAssets(self,params):
+    #     pass
 
     def transferTargetAssetsPrototype(self,params):
         pass
