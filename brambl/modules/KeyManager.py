@@ -77,7 +77,7 @@ def create(params):
 
 
 
-def deriveKey(password,salt,kdfParams,cb='notFunction'):
+def deriveKey(password,salt,kdfParams,cb='notFunction'):#creates a 44 byte key?
     if type(password) == 'undefined' or password == None or not salt:
         raise Exception("Must provide password and salt to derive a key")
 
@@ -85,13 +85,13 @@ def deriveKey(password,salt,kdfParams,cb='notFunction'):
     N = kdfParams['n']
     r = kdfParams['r']
     p = kdfParams['p']
-
     return scrypt(password,salt,dkLen,N,r,p,num_keys=1)
 
 
 def marshal(derivedKey,keyObject,salt,iv,algo):
     if algo == 'aes-256-ctr':
         ciphertext = encrypt(keyObject['privateKey'],derivedKey,iv, 'aes-256-ctr')
+
         keyStorage = {
             'publicKeyId': base58.b58encode(keyObject['publicKey']),
             'crypto': {
@@ -177,7 +177,9 @@ class KeyManager():
 
 
     def verify(self,publicKey,message,signature,cb='notFunction'):
-        return curve.verifySignature(publicKey, message.encode('utf-8'), signature)#returns 0 if verified
+        if curve.verifySignature(base58.b58decode(publicKey), message.encode('utf-8'), signature) == 0:#retunrs -1 if not verified 0 if verified
+            return True
+        return 'not verfied'
 
     def getKeyStorage(self):
         if self.isLocked:
